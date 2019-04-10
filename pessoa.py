@@ -16,5 +16,5 @@ if __name__ == '__main__':
     natalia.nome = 'Natália' #altera o objeto
     #print(natalia.nome)
     #print(natalia.idade)
-    for filho in natalia.filhos:
+    for filho in natalia.filhos:#criando um atributo complexo
         print(natalia.filhos)
