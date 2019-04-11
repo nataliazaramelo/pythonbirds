@@ -18,3 +18,7 @@ if __name__ == '__main__':
     #print(natalia.idade)
     for filho in natalia.filhos:#criando um atributo complexo
         print(natalia.filhos)
+        natalia.sobrenome = 'Zaramelo'# incluindo atributo dinâmico, atributos dinâmicos não são recomendados.
+        # del natalia.filhos deletando atributo dinânmico
+        print(natalia.__dict__)
+        print(junior.__dict__)
