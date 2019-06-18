@@ -1,3 +1,5 @@
+
+
 """
 Você deve criar uma classe carro que vai possuir dois atributos comopostos por duas outrs classes:
 
@@ -24,77 +26,113 @@ O     L
 
    Exemplo:
    #testando motor
-   >>>motor = Motor()
-   >>>motor.velocidade
+   >>> motor = Motor()
+   >>> motor.velocidade
    0
-   >>>motor.acelerar()
-   >>>motor.velocidade
+   >>> motor.acelerar()
+   >>> motor.velocidade
    1
-   >>>motor.acelerar()
-   >>>motor.velocidade
+   >>> motor.acelerar()
+   >>> motor.velocidade
    2
-   >>>motor.acelerar()
-   >>>motor.velocidade
+   >>> motor.acelerar()
+   >>> motor.velocidade
    3
-   >>>motor.frear()
-   >>>motor.velocidade
+   >>> motor.frear()
+   >>> motor.velocidade
    1
-   >>>motor.frear()
-   >>>motor.velocidade
+   >>> motor.frear()
+   >>> motor.velocidade
    0
-   >>>#testando Direcao
-   >>>direcao = Direcao()
-   >>>direcao.valor
+   >>> #testando Direcao
+   >>> direcao = Direcao()
+   >>> direcao.valor
    'Norte'
-   >>>direcao.girar_a_direita()
-   >>>direcao.valor
+   >>> direcao.girar_a_direita()
+   >>> direcao.valor
    'Leste'
-   >>>direcao.girar_a_direita()
-   >>>direcao.valor
+   >>> direcao.girar_a_direita()
+   >>> direcao.valor
    'Sul'
-   >>>direcao.girar_a_direita()
-   >>>direcao.valor
-   'Oeste"
-   >>>direcao.girar_a_direita()
-   >>>direcao.valor
-   'Norte'
-   >>>direcao.girar_a_esquerda()
-   >>>direcao.valor
+   >>> direcao.girar_a_direita()
+   >>> direcao.valor
    'Oeste'
-   >>>direcao.girar_a_esquerda()
-   >>>direcao.valor
+   >>> direcao.girar_a_direita()
+   >>> direcao.valor
+   'Norte'
+   >>> direcao.girar_a_esquerda()
+   >>> direcao.valor
+   'Oeste'
+   >>> direcao.girar_a_esquerda()
+   >>> direcao.valor
    'Sul'
-   >>>direcao.girar_a_esquerda()
-   >>>direcao.valor
+   >>> direcao.girar_a_esquerda()
+   >>> direcao.valor
    'Leste'
-   >>>direcao.girar_a_esquerda()
-   >>>direcao.valor
+   >>> direcao.girar_a_esquerda()
+   >>> direcao.valor
    'Norte'
-   >>>carro = Carro( direcao, motor)
-   >>>carro.calcular_velocidade()
+   >>> carro = Carro( direcao, motor)
+   >>> carro.calcular_velocidade()
    0
-   >>>carro.acelerar()
-   >>>carro.calcular_velocidade()
+   >>> carro.acelerar()
+   >>> carro.calcular_velocidade()
    1
-   >>>carro.acelerar()
-   >>>carro.calcular_velocidade()
+   >>> carro.acelerar()
+   >>> carro.calcular_velocidade()
    2
-   >>>carro.frear()
-   >>>carro.calcular_velocidade()
+   >>> carro.frear()
+   >>> carro.calcular_velocidade()
    2
-   >>>carro.frear()
-   >>>carro.calcular_velocidade()
+   >>> carro.frear()
+   >>> carro.calcular_velocidade()
    0
-   >>>carro.calcular_direcao()
-   >>>'Norte'
-   >>>carro.girar_a_direita()
-   >>>carro.calcular_direção()
+   >>> carro.calcular_direcao()
+   >>> 'Norte'
+   >>> carro.girar_a_direita()
+   >>> carro.calcular_direção()
    'Leste'
-   >>>carro.girar_a_esquerda()
-   >>>carro.calcular_direção()
+   >>> carro.girar_a_esquerda()
+   >>> carro.calcular_direção()
    'Norte'
-   >>>carro.girar_a_esquerda()
-   >>>carro.calcular_direção()
+   >>> carro.girar_a_esquerda()
+   >>> carro.calcular_direção()
    'Oeste'
 
 """
+
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        self.velocidade = max(0, self.velocidade)
+
+
+NORTE = 'Norte'
+SUL = 'Sul'
+LESTE = 'Leste'
+OESTE = 'Oeste'
+
+class Direcao:
+
+    rotacao_a_direita_dct = {
+        NORTE: LESTE, LESTE:SUL, SUL: OESTE, OESTE: NORTE
+    } #DICIONARIO rotacao a direita e a esquerda é um atributo de classe
+
+    rotacao_a_esquerda_dct = {
+        NORTE: OESTE, LESTE: NORTE, SUL: LESTE, OESTE: SUL
+    }
+
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self):
+        self.valor = self.rotacao_a_direita_dct [self.valor]
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda_dct [self.valor]
